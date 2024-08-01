@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const initialGanmeBoard = [
     [null, null, null],
     [null, null, null],
@@ -5,12 +7,22 @@ const initialGanmeBoard = [
 ];
 
 export default function GameBoard() {
+    const [gameBoard, setGameBoard] =  useState(initialGanmeBoard);
+
+    function hadnleSelectSquare(rowIndex, colIndex) {
+        setGameBoard((prevGameBoard) => {
+            const updatedBoard = [...prevGameBoard.map(innerArray => [...innerArray])];
+            updatedBoard[rowIndex][colIndex] = 'X';
+            return updatedBoard;
+        });
+    }
+
     return <ol id="game-board">
-        {initialGanmeBoard.map((row, rowIndex) => <li key={rowIndex}>
+        {gameBoard.map((row, rowIndex) => <li key={rowIndex}>
             <ol>
                 {row.map((playerSymbol, colIndex) => (
                 <li key={colIndex}>
-                    <button>{playerSymbol}</button>
+                    <button onClick={() => hadnleSelectSquare(rowIndex, colIndex)}>{playerSymbol}</button>
                 </li>
             ))}
             </ol>
