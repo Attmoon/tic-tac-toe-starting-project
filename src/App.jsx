@@ -41,4 +41,5 @@ function App() {
     <Log turns={gameTurns} />
   </main>;
 }
+
 export default App;
