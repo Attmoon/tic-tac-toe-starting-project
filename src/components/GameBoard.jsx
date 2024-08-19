@@ -1,18 +1,7 @@
-const initialGanmeBoard = [
-    [null, null, null],
-    [null, null, null],
-    [null, null, null]
-];
+
 
 export default function GameBoard( {onSelectSquare, turns} ) {
-    let gameBoard = initialGanmeBoard;
-
-    for(const turn of turns) {
-        const { square, player} = turn;
-        const { row, col} = square;
-
-        gameBoard[row][col] = player;
-    }
+    
 
     // const [gameBoard, setGameBoard] =  useState(initialGanmeBoard);
 
